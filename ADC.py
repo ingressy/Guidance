@@ -12,8 +12,8 @@ import globals
 
 VOLTAGE_FACTOR: float = 4.766933722
 SENSITIVITY: float = 0.185  # 5A Version
-CAL_FACTOR: float = 0.74
-OFFSET: float = 2.627
+CAL_FACTOR: float = 0.527
+OFFSET: float = 2.527
 
 class ADC:
     def __init__(self) -> None:
@@ -62,7 +62,7 @@ class ADC:
     def get_ampere(self, channel) -> float:
         #gibt einen float mit der aktuellen Batterie Stromstärke zurück
         try:
-            return round(((self.channels[channel].voltage - OFFSET) / SENSITIVITY) * CAL_FACTOR, 2)
+            return round(((self.channels[channel].voltage - OFFSET) / SENSITIVITY) * CAL_FACTOR, 3)
         except KeyError:
             raise ValueError("Ungültiger ADC Channel?")
         except Exception as e:
