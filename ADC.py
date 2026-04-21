@@ -10,7 +10,7 @@ from adafruit_mcp3xxx.analog_in import AnalogIn
 
 import globals
 
-VOLTAGE_FACTOR: float = 5.659637188
+VOLTAGE_FACTOR: float = 4.766933722
 SENSITIVITY: float = 0.185  # 5A Version
 CAL_FACTOR: float = 0.74
 OFFSET: float = 2.627
