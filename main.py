@@ -73,7 +73,8 @@ def main(stdscr):
     lenkung = 0
 
     last_update = 0.0
-    info_lines = get_info(adc)  # Startwert
+    info_lines = get_info(adc)  #Startwert
+    motor = motors.Motors()
 
     while True:
         key = stdscr.getch()
@@ -90,18 +91,18 @@ def main(stdscr):
             lenkung = max(-100, lenkung - 2)
 
         if gas > 0:
-            motors.vorwaerts(gas)
+            motor.vorwaerts(gas)
         elif gas < 0:
-            motors.rueckwaerts(gas)
+            motor.rueckwaerts(abs(gas))
         else:
-            motors.stop()
+            motor.stop()
 
         if lenkung > 0:
-            motors.rechts(lenkung)
+            motor.rechts(lenkung)
         elif lenkung < 0:
-            motors.links(lenkung)
+            motor.links(abs(lenkung))
         else:
-            motors.stoplenkung()
+            motor.stoplenkung()
 
 
         # alle 3 Sekunden Info neu berechnen
